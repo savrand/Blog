@@ -1,0 +1,8 @@
+<strong>Name</strong> <%= @user.name %><br />
+
+  <% @micropost.each do |micropost| %>
+  <%@username = User.find(micropost.user_id)[:name] %> 
+  <strong> <%=@username%></strong></br>
+  <%=micropost.content %></br>
+  <%end%>
+

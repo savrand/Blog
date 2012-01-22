@@ -1,0 +1,17 @@
+class MicropostsController < ApplicationController
+
+  def create
+  @user = User.find(params[:user_id])
+    @micropost  = @user.microposts.build(params[:micropost])
+    if @micropost.save
+      flash[:success] = "Micropost created!"
+      
+    else
+      render 'pages/home'
+    end
+  end
+
+  def destroy
+  end
+
+end

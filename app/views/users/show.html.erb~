@@ -1,0 +1,29 @@
+<table>
+    <tr>
+       <tb> <strong>Name</strong> <%= @user.name %></tb>
+       <tb>    <%=link_to "Все пользователи", alluser_user_path(@user)%></tb>
+       <tb><a href="<%= follow_user_path(@user) %>">   Читаемые пользователи</a></tb></tr></table>
+       <tr><strong>Microposts</strong> <%= @user.microposts.count %></tr>
+<h2>Microposts</h2>
+  <% @microposts.each do |microposts| %>
+      <%= microposts.content %>
+      <hr>
+  <% end %>
+      <td class="sidebar round">
+    </td>
+
+<%= form_for @micropost do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div class="field">    
+    <%= f.text_area :content %>
+  </div>
+  <div class="field">
+    <%= hidden_field_tag(:user_id, @user.id) %></br>
+  </div>
+  <div class="actions">
+    <%= f.submit "Отправить" %>
+  </div>
+<% end %>
+
+
+ 
